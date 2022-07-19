@@ -75,6 +75,17 @@ public class CommonUtils {
                 }
             }
         }
+        if (!value.contains("1")) {
+            ShellUtils.CommandResult commandResult = ShellUtils.execCommand(ShellUtils.SYSTEM_PACKAGE_COMMAND, false);
+            if (commandResult.result != -1) {
+                String successMsg = commandResult.successMsg;
+                for (String s : app) {
+                    if (successMsg.contains(s)) {
+                        value = value + 1;
+                    }
+                }
+            }
+        }
         return value;
     }
 }

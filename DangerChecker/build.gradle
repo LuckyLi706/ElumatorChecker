@@ -25,6 +25,23 @@ android {
     }
 }
 
+def version = "v1.0.0"
+
+task generateJar(type: Jar, dependsOn: ['build']) {   //当前的脚本依赖于build脚本
+    archiveFileName = "ElulatorChecker_${version}.jar" //打包后的jar包名
+    //打包的资源路径
+    from('build/intermediates/javac/debug/classes')
+    destinationDirectory = file('release') //打包后jar文件的存放路径
+    //添加一些忽略文件
+    exclude('android')   //忽略android目录下的所有文件
+    //忽略掉全部BuiuldConfig文件
+    exclude('**/BuildConfig.class')
+    exclude('**/BuildConfig\$*.class')
+    //忽略掉全部R文件
+    exclude('**/R.class')
+    exclude('**/R\$*.class')
+}
+
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.3.0'

@@ -15,6 +15,7 @@ import com.lucky.dangerchecker.utils.CommandUtils;
 import com.lucky.dangerchecker.utils.CommonUtils;
 import com.lucky.dangerchecker.utils.FileUtil;
 import com.lucky.dangerchecker.utils.LogUtil;
+import com.lucky.dangerchecker.utils.ShellUtils;
 import com.lucky.dangerchecker.utils.StringUtil;
 
 import java.io.BufferedReader;
@@ -89,7 +90,7 @@ public class Emulator {
     @SuppressLint("SdCardPath")
     private final String[] ldAppName = {"/sdcard/ldAppStore", "/system/priv-app/ldAppStore/ldAppStore.apk", "/system/app/ldAppStore/ldAppStore.apk",
             "/lib/libldutils.so", "/lib/hw/gps.ld.so"};
-    private final String[] ldAppPackage = {"com.android.flysilkworm","com.yqw.llfz.ld"};
+    private final String[] ldAppPackage = {"com.android.flysilkworm", "com.yqw.llfz.ld"};
 
     //夜神模拟器(/system/app/NoxHelp_zh.apk 该路径会卡死)
     private static final String STRING_TYPE_NOX = "夜神模拟器";
@@ -387,7 +388,6 @@ public class Emulator {
      */
     private String isLeiDian(Context context) {
         String value = isMark(ldAppName) + "-" + CommonUtils.isSystemApp(context, ldAppPackage);
-        Log.d("ggg", "雷电:" + value);
         //return value;
         return value;
     }
